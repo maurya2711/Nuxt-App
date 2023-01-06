@@ -5,7 +5,7 @@ Simple full stack Nuxt App. It is paradise for the bookreaders where they can re
 ## Technology used:-
   * For backend:- node js, express, jwt, multer, aws bucket for storing images and files.
   * Database:- MongoDb
-  * For Frontend:- Nuxtjs, tailwind, bootstrap
+  * For Frontend:- Nuxtjs, Vuex, tailwind, bootstrap
 
 ## How to Run:-
   * clone this repo and run npm i or yarn.

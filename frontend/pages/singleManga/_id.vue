@@ -30,15 +30,20 @@
               <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">{{item}}</span>
             </div>
             </div>
-            <div class="btn">
+            <div class="btn d-flex">
               <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-4 py-2 rounded dark:bg-gray-700 dark:text-blue-400 hover:border-blue-400 ml-5" @click="openPdf">Read Now</button>
               <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-4 py-2 rounded dark:bg-gray-700 dark:text-blue-400 hover:border-blue-400 ml-5">Download</button>
-              
-            </div>
+              <div class="update-section ml-4">
+                <small class="update-text">Want to Update this book? <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-4 py-2 rounded dark:bg-gray-700 dark:text-blue-400 hover:border-blue-400 ml-5" @click="handleUpdate">Update</button>
+                </small>
+              </div>
+             
+            </div> 
           </div>
         </div>
       </div>
     </div>
+   
     <div id="openpdf" class="card-content card flex items-center shadow-xl" v-if="pdfShow">
       <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-4 py-2 rounded dark:bg-gray-700 dark:text-blue-400 hover:border-blue-400 ml-5" v-if="pdfShow" @click="closePdf">Stop Reading</button>
        <OpenPdf :pdfSource="getSingleManga.file" />
@@ -57,6 +62,8 @@ export default {
             token: null,
             description: null,
             pdfShow: false,
+            update: false
+
         };
     },
     computed: {
@@ -65,9 +72,12 @@ export default {
         }),
         ...mapGetters({ "getSingleManga": "singleManga/getSingleManga", "getMessage": "singleManga/getMessage" })
     },
+    mounted(){
+      console.log("singleManga is mounted", this.getSingleManga, this.data)
+    },
     async fetch() {
         (this.$auth.$storage.getCookie("token")) ? this.token = this.$auth.$storage.getCookie("token") : this.token = null;
-        await this.$store.dispatch("singleManga/getSingleManga", this.$route.params.id);
+         this.data= await this.$store.dispatch("singleManga/getSingleManga", this.$route.params.id);
         if (this.getSingleManga.title === 'The Silent Patient') {
           this.description = silentPatient;
         }else if (this.getSingleManga.title === 'You'){
@@ -106,8 +116,16 @@ export default {
             closePdf() {
                 this.pdfShow = false;
                 window.location.href=`/singleManga/${this.getSingleManga._id}`
+            },
+            handleUpdate(){
+                this.update = true;
             }
           },
 }  
 </script>
+<style scoped>
+.update-modal{
+  z-index: 1;
+}
+</style>
 

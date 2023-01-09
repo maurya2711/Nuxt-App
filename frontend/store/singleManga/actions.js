@@ -1,10 +1,10 @@
 export default {
     async getSingleManga({commit}, id){
-        console.log("+++++++++++++++++", id)
+        console.log("+++++++++++++++++ single manga action dispatch", id)
         try{
             const {data}= await this.$axios.get(`http://localhost:8080/data/${id}`,{
                 headers:{
-                    "x-access-token":this.$auth.$storage.getCookie("token")
+                    "x-access-token":this.$cookiz.get("token")
                 }
             })
             if(data.message === "sucess"){

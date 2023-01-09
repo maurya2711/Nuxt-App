@@ -101,6 +101,7 @@ import NuxtLogo from '../components/NuxtLogo.vue'
 </script>
 
 <style scoped>
+  
   .card-container{
     width: 50%;
     display: flex;

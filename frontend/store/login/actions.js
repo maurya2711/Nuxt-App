@@ -14,9 +14,11 @@ export default {
             console.log("success",data.success)
             if(data.success){
             commit("setToken",data.user.token)
+            commit("setAuth",true)
             // this.$auth.$storage.setLocalStorage("x-access-token", data.user.token)
-            this.$auth.$storage.setCookie("token", data.user.token)
-            // console.log("setting token to localStorage",response)
+            // this.$auth.$storage.setCookie("token", data.user.token)
+            this.$cookiz.set('token',data.user.token)
+            
             commit("setSuccess",data.success)
             }
         }catch(e){

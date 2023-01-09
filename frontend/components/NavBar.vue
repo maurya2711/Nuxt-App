@@ -82,7 +82,7 @@ export default {
       console.log("after search is triggered", this.result)
     },
     handleLogout() {
-      this.$auth.$storage.removeCookie('token');
+      this.$cookiz.remove("token");
       this.$router.push('/login');
     }
   }

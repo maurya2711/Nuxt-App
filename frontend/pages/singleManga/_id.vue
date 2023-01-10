@@ -32,7 +32,7 @@
             </div>
             <div class="btn d-flex">
               <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-4 py-2 rounded dark:bg-gray-700 dark:text-blue-400 hover:border-blue-400 ml-5" @click="openPdf">Read Now</button>
-              <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-4 py-2 rounded dark:bg-gray-700 dark:text-blue-400 hover:border-blue-400 ml-5">Download</button>
+              <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-4 py-2 rounded dark:bg-gray-700 dark:text-blue-400 hover:border-blue-400 ml-5" @click="handleDownload(getSingleManga.file)">Download</button>
               <div class="update-section ml-4">
                 <small class="update-text">Want to Update this book? <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-4 py-2 rounded dark:bg-gray-700 dark:text-blue-400 hover:border-blue-400 ml-5" @click="handleUpdate">Update</button>
                 </small>
@@ -119,6 +119,15 @@ export default {
             },
             handleUpdate(){
                 this.update = true;
+            },
+            async handleDownload(file){
+              console.log("download button clicked", file, this.$route.params.id);
+              let details={
+                id: this.$route.params.id,
+                file: file
+              }
+              await this.$store.dispatch("singleManga/downloadBook", details);
+
             }
           },
 }  

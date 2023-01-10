@@ -2,9 +2,12 @@ export default {
     setToken(state,payload){
         state.token = payload
     },
-    setStatus(state,payload){
+    setSuccess(state,payload){
         console.log("++++++++++++++in mutation",payload)
         state.status = payload
-    }
+    },
+    setAuth(state,payload){
+        state.auth = payload
+    },
 
   };

@@ -6,7 +6,7 @@ export default {
         try{
             const {data}= await this.$axios.get("http://localhost:8080/data",{
                 headers:{
-                    "x-access-token":this.$auth.$storage.getCookie("token")
+                    "x-access-token":this.$cookiz.get("token")
                 }
             })
             commit('setBooks',data.allNovels)

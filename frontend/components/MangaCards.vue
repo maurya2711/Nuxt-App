@@ -32,7 +32,7 @@ export default {
   methods:{
     async handleManga(id){
       console.log("handleManga is clicked", id)
-      this.$router.push(`/singleManga/${id}`)
+      window.location.href=`/singleManga/${id}`
     }
   }
 }

@@ -26,7 +26,7 @@
 //  import Loader  from '../components/Loader.vue';
 export default {
     name: "IndexPage",
-    auth:false,
+    middleware: 'authenticated',
     computed:{
       ...mapState({
        books: (state)=> state.home.books
@@ -41,14 +41,14 @@ export default {
       }
     },
     async mounted() {
-        console.log("mounted home page", this.$auth.$storage.getCookie("token")); 
+        console.log("mounted home page", this.$cookiz.get("token")); 
       //   this.$nextTick(() => {
       // this.$nuxt.$loading.start()
       // this.loading = true
       // setTimeout(() => this.$nuxt.$loading.finish(), 1000)})
     },
     async fetch(){
-      (this.$auth.$storage.getCookie("token")) ? this.token= this.$auth.$storage.getCookie("token") : this.token=null
+      (this.$cookiz.get("token")) ? this.token= this.$cookiz.get("token") : this.token=null
         await this.$store.dispatch("home/getAllBooks")
     }
 }

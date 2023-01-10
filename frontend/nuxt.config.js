@@ -39,8 +39,11 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
-  ],
+    ['cookie-universal-nuxt', { alias: 'cookiz' }],
 
+    
+  ],
+  
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: {
@@ -50,9 +53,11 @@ export default {
       },
   },
   router: {
-    middleware: ['auth']
+    middleware: ['authenticated']
   },
   loading: '@/components/Loader.vue',
+  ssr: true,
+  target: 'server',
 
   // target: 'server'
 }

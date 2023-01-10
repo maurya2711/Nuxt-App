@@ -1,6 +1,6 @@
 <template>
   <div class="open-pdf-container">
-    <iframe :src="this.pdfSource" width="700"
+    <iframe :src="this.pdfSource" class="iframe-container"
     height="700"
     
     style="border: 1px solid #EEE; background: white"
@@ -21,6 +21,13 @@ export default {
 }
 </script>
 
-<style>
-
+<style scopped>
+.open-pdf-container{
+    width: 100%;
+    height: 100%;
+  }
+.iframe-container{
+  width: 100% !important;
+ 
+}
 </style>

@@ -218,6 +218,7 @@ module.exports = class Api {
       res.status(200).json({"message": "file downloaded successfully"});
     }catch(err){
       console.log("error in download pdf api catch block", err);
+
       res.status(500).json({ message: "Something went wrong" });
     }
   }

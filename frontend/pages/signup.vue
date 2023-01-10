@@ -120,6 +120,10 @@ export default {
 </script>
 
 <style scoped>
+
+.main-container{
+  overflow:auto;
+}
 .card-container {
   width: 50%;
   display: flex;

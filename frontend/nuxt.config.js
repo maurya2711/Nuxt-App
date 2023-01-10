@@ -40,7 +40,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     ['cookie-universal-nuxt', { alias: 'cookiz' }],
-
+    'file-saver'
     
   ],
   

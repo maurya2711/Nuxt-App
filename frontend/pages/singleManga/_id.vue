@@ -72,9 +72,7 @@ export default {
         }),
         ...mapGetters({ "getSingleManga": "singleManga/getSingleManga", "getMessage": "singleManga/getMessage" })
     },
-    mounted(){
-      console.log("singleManga is mounted", this.getSingleManga, this.data)
-    },
+
     async fetch() {
         (this.$auth.$storage.getCookie("token")) ? this.token = this.$auth.$storage.getCookie("token") : this.token = null;
          this.data= await this.$store.dispatch("singleManga/getSingleManga", this.$route.params.id);

@@ -1,5 +1,6 @@
 const Data = require("../model/data");
 const { s3 } = require("../middleware/upload");
+const { downloadPDF } = require('../middleware/download')
 module.exports = class Api {
   static async createData(req, res) {
     try {
@@ -204,6 +205,20 @@ module.exports = class Api {
       res.status(200).json(data);
     } catch (err) {
       console.log("error in delete api catch block", err);
+      res.status(500).json({ message: "Something went wrong" });
+    }
+  }
+
+  static async downloadPDF (req, res) {
+    console.log("files", req.body);
+    const file= req.body.file;
+    try{
+      console.log("download pdf try block");
+      downloadPDF(file, 'file.pdf');
+      res.status(200).json({"message": "file downloaded successfully"});
+    }catch(err){
+      console.log("error in download pdf api catch block", err);
+
       res.status(500).json({ message: "Something went wrong" });
     }
   }

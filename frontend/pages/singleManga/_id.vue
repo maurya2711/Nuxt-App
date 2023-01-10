@@ -47,7 +47,7 @@
 </template>
 <script>
 import {mapState, mapGetters, mapActions} from 'vuex'
-import {silentPatient, percyJackson, harryPotter, nameOfTheWind, theVinciCode, americanPsycho, theWitcher} from '../../description.js'
+import {silentPatient, percyJackson, harryPotter, nameOfTheWind, theVinciCode, americanPsycho, theWitcher,you} from '../../description.js'
 import OpenPdf from '../../components/OpenPdf.vue'
 export default {
     name: "IndexPage",
@@ -64,10 +64,6 @@ export default {
             singleManga: (state) => state.singleManga.singleManga
         }),
         ...mapGetters({ "getSingleManga": "singleManga/getSingleManga", "getMessage": "singleManga/getMessage" })
-    },
-    mounted() {
-        // console.log("single Component is mounted",silentPatient)
-        
     },
     async fetch() {
         (this.$auth.$storage.getCookie("token")) ? this.token = this.$auth.$storage.getCookie("token") : this.token = null;
@@ -104,12 +100,10 @@ export default {
     components: { OpenPdf },
     methods: {
             openPdf() {
-              console.log("open pdf button is clicked")
                 this.pdfShow = true;
                 window.location.href="#openpdf"
             },
             closePdf() {
-              console.log("close pdf button is clicked")
                 this.pdfShow = false;
                 window.location.href=`/singleManga/${this.getSingleManga._id}`
             }

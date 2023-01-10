@@ -54,6 +54,7 @@
 import {mapState, mapGetters, mapActions} from 'vuex'
 import {silentPatient, percyJackson, harryPotter, nameOfTheWind, theVinciCode, americanPsycho, theWitcher,you} from '../../description.js'
 import OpenPdf from '../../components/OpenPdf.vue'
+import {saveAs} from 'file-saver';
 export default {
     name: "IndexPage",
     auth: false,
@@ -119,13 +120,7 @@ export default {
                 this.update = true;
             },
             async handleDownload(file){
-              console.log("download button clicked", file, this.$route.params.id);
-              let details={
-                id: this.$route.params.id,
-                file: file
-              }
-              await this.$store.dispatch("singleManga/downloadBook", details);
-
+                saveAs(file,'download.pdf')
             }
           },
 }  

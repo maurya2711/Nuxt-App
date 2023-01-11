@@ -15,9 +15,11 @@ const uploadPostData = (req, res, next) => {
 
 router.post('/',auth,uploadPostData,Api.createData);
 router.get('/',auth,Api.getAllNovels);
+router.get('/search',auth,Api.searchBook)
 router.get('/:id',auth,Api.getNovelById);
 router.put('/:id',auth,uploadPostData,Api.updateNovelById);
 router.delete('/:id',auth, Api.deleteNovelById);
 router.post('/download/:id',auth,Api.downloadPDF);
+
 
 module.exports=router;

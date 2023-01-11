@@ -1,6 +1,6 @@
 const Data = require("../model/data");
 const { s3 } = require("../middleware/upload");
-const { downloadPDF } = require('../middleware/download')
+const { downloadPDF } = require("../middleware/download");
 module.exports = class Api {
   static async createData(req, res) {
     try {
@@ -88,7 +88,7 @@ module.exports = class Api {
       const { title, author, ongoing, tags, chapters, seasons, description } =
         req.body;
       if (image || file) {
-        if(image && file){
+        if (image && file) {
           const params = {
             Bucket: process.env.AWS_BUCKET_NAME,
             Key: req.files.image[0].originalname,
@@ -96,7 +96,7 @@ module.exports = class Api {
             ACL: "public-read-write",
             ContentType: "image/jpg",
           };
-    
+
           s3.upload(params, async (error, data) => {
             if (error) {
               res.status(500).send({ err: error });
@@ -125,11 +125,10 @@ module.exports = class Api {
               }
               const finalData = { ...newdata, file: data.Location };
               const updatedData = await Data.findByIdAndUpdate(id, finalData);
-            res.status(200).send({ message: "Image updated", updatedData });
+              res.status(200).send({ message: "Image updated", updatedData });
             });
           });
-        }
-        else if (image) {
+        } else if (image) {
           const params = {
             Bucket: process.env.AWS_BUCKET_NAME,
             Key: req.files.image[0].originalname,
@@ -156,8 +155,7 @@ module.exports = class Api {
             const updatedData = await Data.findByIdAndUpdate(id, newData);
             res.status(200).send({ message: "Image updated", updatedData });
           });
-        }  
-          else {
+        } else {
           const params = {
             Bucket: process.env.AWS_BUCKET_NAME,
             Key: req.files.file[0].originalname,
@@ -209,16 +207,31 @@ module.exports = class Api {
     }
   }
 
-  static async downloadPDF (req, res) {
+  static async downloadPDF(req, res) {
     console.log("files", req.body);
-    const file= req.body.file;
-    try{
+    const file = req.body.file;
+    try {
       console.log("download pdf try block");
-      downloadPDF(file, 'file.pdf');
-      res.status(200).json({"message": "file downloaded successfully"});
-    }catch(err){
+      downloadPDF(file, "file.pdf");
+      res.status(200).json({ message: "file downloaded successfully" });
+    } catch (err) {
       console.log("error in download pdf api catch block", err);
 
+      res.status(500).json({ message: "Something went wrong" });
+    }
+  }
+
+  static async searchBook(req, res) {
+    const query = req.query.query;
+    try {
+      const data = await Data.find({ title: query });
+      if (data.length !== 0) {
+        res.status(200).json({ message: "Serached Result is here", data });
+      } else {
+        res.status(404).json({ message: "No Book Found" });
+      }
+    } catch (err) {
+      console.log("error in search book api", err);
       res.status(500).json({ message: "Something went wrong" });
     }
   }

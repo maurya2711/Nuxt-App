@@ -31,7 +31,6 @@
               v-model="serach"
               v-on:input="searchBook"
             ></b-form-input>
-
             <div class="suggest" v-if="typing && toSearch !== ''">
               <li
                 class="list-val"
@@ -47,10 +46,8 @@
               class="my-2 my-sm-0"
               type="button"
               @click="handleSearch"
-              >Search</b-button
-            >
+              >Search</b-button> 
           </b-nav-form>
-
           <b-nav-item-dropdown text="Lang" right>
             <b-dropdown-item href="#">EN</b-dropdown-item>
             <b-dropdown-item href="#">ES</b-dropdown-item>
@@ -73,7 +70,6 @@
 </template>
 
 <script>
-
 import { mapState, mapGetters } from "vuex";
 export default {
   name: "Navbar",
@@ -111,44 +107,12 @@ export default {
       } else {
         alert("Oops! Sorry this book is not available at the moment.");
       }
-    }
-  },
-  computed:{
-    ...mapState({
-      serachResult: (state)=> state.navbar.serachResult
-    })
-  },
-  mounted(){
-    console.log("========NAVBAR",this.allBooks)
-  },
-  methods: {
-    searchBook(){
-      this.typing = true;
-      console.log("onChange is triggered", this.serach)
-      this.result = this.allBooks.filter((item,index)=>{
-        return item.title.toLowerCase().includes(this.serach.toLowerCase())
-      })
-      this.toSearch=this.serach
-      console.log("after search is triggered", this.result)
-    },
-    async handleSearch(){
-      console.log("search is triggered", this.toSearch, this.result)
-      await this.$store.dispatch("navbar/getSearchedBook", this.toSearch)
-      if(this.result.length !== 0){
-        window.location.href=`/singleManga/${this.result[0]._id}`
-      }else{
-        alert('Oops! Sorry this book is not available at the moment.')
-      }
-    },
-    handleLogout() {
-      this.$cookiz.remove("token");
-      this.$router.push("/login");
     },
     selectBook(item) {
       window.location.href = `/singleManga/${item}`;
     },
   },
-};
+}
 </script>
 
 <style scoped>
@@ -156,6 +120,22 @@ export default {
   height: 40px;
   width: 69px;
   border-radius: 80px;
+}
+.suggest {
+  position: absolute;
+  top: 64px;
+  border-radius: 2px;
+  width: 198px;
+  background: white;
+  z-index: 2;
+}
+.input {
+  position: relative !important;
+}
+.list-val {
+  border-bottom: solid 1px grey;
+  padding: 5px;
+  cursor: pointer;
 }
 .suggest {
   position: absolute;

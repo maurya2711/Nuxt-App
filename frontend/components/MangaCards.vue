@@ -41,13 +41,12 @@ export default {
 <style scoped>
 .single-card{
     height: 85%;
-
+    cursor:pointer
 }
 .books-container{
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  
 }
 .card-img-top{
  height: 360px;

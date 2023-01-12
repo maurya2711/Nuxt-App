@@ -31,6 +31,7 @@
               v-model="serach"
               v-on:input="searchBook"
             ></b-form-input>
+
             <div class="suggest" v-if="typing && toSearch !== ''">
               <li
                 class="list-val"
@@ -72,6 +73,7 @@
 </template>
 
 <script>
+
 import { mapState, mapGetters } from "vuex";
 export default {
   name: "Navbar",
@@ -109,6 +111,34 @@ export default {
       } else {
         alert("Oops! Sorry this book is not available at the moment.");
       }
+    }
+  },
+  computed:{
+    ...mapState({
+      serachResult: (state)=> state.navbar.serachResult
+    })
+  },
+  mounted(){
+    console.log("========NAVBAR",this.allBooks)
+  },
+  methods: {
+    searchBook(){
+      this.typing = true;
+      console.log("onChange is triggered", this.serach)
+      this.result = this.allBooks.filter((item,index)=>{
+        return item.title.toLowerCase().includes(this.serach.toLowerCase())
+      })
+      this.toSearch=this.serach
+      console.log("after search is triggered", this.result)
+    },
+    async handleSearch(){
+      console.log("search is triggered", this.toSearch, this.result)
+      await this.$store.dispatch("navbar/getSearchedBook", this.toSearch)
+      if(this.result.length !== 0){
+        window.location.href=`/singleManga/${this.result[0]._id}`
+      }else{
+        alert('Oops! Sorry this book is not available at the moment.')
+      }
     },
     handleLogout() {
       this.$cookiz.remove("token");
@@ -143,4 +173,5 @@ export default {
   padding: 5px;
   cursor: pointer;
 }
+
 </style>

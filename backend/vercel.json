@@ -11,5 +11,10 @@
         "src": "/(.*)",
         "dest": "index.js"
       }
-    ]
+    ],
+    "env": {
+      "AWS_ACCESS_KEY_ID": "AKIATBZ4FVWCNYVNHA67",
+      "AWS_SECRET_ACCESS_KEY": "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",
+      "AWS_BUCKET_NAME": "vue-image"
+    }
   }

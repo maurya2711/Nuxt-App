@@ -31,8 +31,8 @@ const filefilter = (req, file, cb) => {
 const upload = multer({ storage: storage, fileFilter: filefilter });
 
 const s3 = new Aws.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_ACCESS_KEY_SECRET,
+  accessKeyId: process.env.MY_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.MY_AWS_ACCESS_KEY_SECRET,
 });
 
 const port = process.env.PORT || 4000;
@@ -49,7 +49,7 @@ app.use("/data", require("./routes/routes"));
 app.post("/", upload.single("image"), (req, res) => {
   console.log("Upload-------------->",req.file)
   const params = {
-    Bucket: process.env.AWS_BUCKET_NAME,
+    Bucket: process.env.MY_AWS_BUCKET_NAME,
     Key: req.file.originalname,
     Body: req.file.buffer,
     ACL: "public-read-write",

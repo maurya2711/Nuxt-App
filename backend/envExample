@@ -1,6 +1,6 @@
 PORT=8080
 DB_URI=your database key"
 JWT_SECRET="sercretKeyusedinjwt"
-AWS_ACCESS_KEY_ID="your aws access id"
-AWS_ACCESS_KEY_SECRET="your aws access key secret"
-AWS_BUCKET_NAME="vue-image"
+MY_AWS_ACCESS_KEY_ID="your aws access id"
+MY_AWS_ACCESS_KEY_SECRET="your aws access key secret"
+MY_AWS_BUCKET_NAME="vue-image"

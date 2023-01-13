@@ -1,0 +1,22 @@
+{
+  "name": "nuxt-app",
+  "version": "1.0.0",
+  "description": "Simple full stack Nuxt App. It is paradise for the bookreaders where they can read any novels for free and download them.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maurya2711/Nuxt-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maurya2711/Nuxt-App/issues"
+  },
+  "homepage": "https://github.com/maurya2711/Nuxt-App#readme",
+  "dependencies": {
+    "vercel": "^28.11.1"
+  }
+}

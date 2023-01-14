@@ -11,6 +11,6 @@ Simple full stack Nuxt App. It is paradise for the bookreaders where they can re
   * clone this repo and run npm i or yarn.
   * make .env file with the refrence of the envExample file.
   * To run backend:-
-      * run nodemon index.js
+      * nodemon index.js
   * To run frontend:-
-      * run npm run dev
+      * npm run dev

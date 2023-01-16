@@ -7,7 +7,7 @@ export default {
         console.log("+++++++++++++++",email,password);
         try{
             console.log("in try block")
-            const {data}= await this.$axios.post("http://localhost:8080/login", {
+            const {data}= await this.$axios.post(`${process.env.API_BASE_URL}/login`, {
                 email:loginDetails.email,
                 password:loginDetails.password
             })
@@ -15,8 +15,6 @@ export default {
             if(data.success){
             commit("setToken",data.user.token)
             commit("setAuth",true)
-            // this.$auth.$storage.setLocalStorage("x-access-token", data.user.token)
-            // this.$auth.$storage.setCookie("token", data.user.token)
             this.$cookiz.set('token',data.user.token)
             
             commit("setSuccess",data.success)

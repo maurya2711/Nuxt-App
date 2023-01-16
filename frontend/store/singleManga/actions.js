@@ -2,7 +2,7 @@ export default {
     async getSingleManga({commit}, id){
         console.log("+++++++++++++++++ single manga action dispatch", id)
         try{
-            const {data}= await this.$axios.get(`http://localhost:8080/data/${id}`,{
+            const {data}= await this.$axios.get(`${process.env.API_BASE_URL}/data/${id}`,{
                 headers:{
                     "x-access-token":this.$cookiz.get("token")
                 }
@@ -21,7 +21,7 @@ export default {
         const {id, file}= details
         console.log("details", id, file)
         try{
-            const {data}= await this.$axios.post(`http://localhost:8080/data/download/${id}`, {file},{
+            const {data}= await this.$axios.post(`${process.env.API_BASE_URL}/data/download/${id}`, {file},{
                 headers:{
                     "x-access-token":this.$cookiz.get("token")
                 }

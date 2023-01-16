@@ -3,6 +3,7 @@ export default {
         console.log("+++++++++++++++++ single manga action dispatch", id)
         try{
             const {data}= await this.$axios.get(`https://otaku-world.vercel.app/data/${id}`,{
+
                 headers:{
                     "x-access-token":this.$cookiz.get("token")
                 }

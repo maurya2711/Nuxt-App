@@ -1,13 +1,10 @@
-// import axios from '@nuxtjs/axios'
+
 export default {
     async getToken({commit},loginDetails){
         console.log("in action token",loginDetails);
         const {email,password} = loginDetails
-
-        console.log("+++++++++++++++",email,password);
         try{
-            console.log("in try block")
-            const {data}= await this.$axios.post(`${process.env.API_BASE_URL}/login`, {
+            const {data}= await this.$axios.post(`https://otaku-world.vercel.app/login`, {
                 email:loginDetails.email,
                 password:loginDetails.password
             })

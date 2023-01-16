@@ -3,7 +3,7 @@
 export default {
     async getAllBooks({commit}){
         try{
-            const {data}= await this.$axios.get(`${process.env.API_BASE_URL}/data`,{
+            const {data}= await this.$axios.get(`https://otaku-world.vercel.app/data`,{
                 headers:{
                     "x-access-token":this.$cookiz.get("token")
                 }

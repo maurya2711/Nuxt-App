@@ -10,7 +10,7 @@ export default {
         formData.append("image", signupDetails.image);
         try{
             console.log("in try block", formData)
-            const {data}= await this.$axios.post(`${process.env.API_BASE_URL}`,formData)
+            const {data}= await this.$axios.post(`https://otaku-world.vercel.app/data`,formData)
                 
             console.log("success",data.success)
             if(data.success){

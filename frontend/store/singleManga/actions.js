@@ -21,7 +21,7 @@ export default {
         const {id, file}= details
         console.log("details", id, file)
         try{
-            const {data}= await this.$axios.post(`${process.env.API_BASE_URL}/data/download/${id}`, {file},{
+            const {data}= await this.$axios.post(`https://otaku-world.vercel.app/data/download/${id}`, {file},{
                 headers:{
                     "x-access-token":this.$cookiz.get("token")
                 }

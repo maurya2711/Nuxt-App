@@ -16,7 +16,7 @@ export default {
     formData.append("file", bookDetails.file);
     try {
       const { data } = await this.$axios.post(
-        `${process.env.API_BASE_URL}/data/`,
+        `https://otaku-world.vercel.app/data/`,
         formData,
         {
           headers: {

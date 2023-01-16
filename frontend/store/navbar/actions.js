@@ -4,7 +4,7 @@
 export default {
     async getSearchedBook({commit},value){
         try{
-            const {data}= await this.$axios.get(`${process.env.API_BASE_URL}/data/search?query=${value}`,{
+            const {data}= await this.$axios.get(`https://otaku-world.vercel.app/data/search?query=${value}`,{
                 headers:{
                     "x-access-token":this.$cookiz.get("token")
                 }

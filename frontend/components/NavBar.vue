@@ -111,6 +111,10 @@ export default {
     selectBook(item) {
       window.location.href = `/singleManga/${item}`;
     },
+    handleLogout(){
+      this.$cookiz.remove("token");
+      this.$router.push("/login");
+    }
   },
 }
 </script>
@@ -137,21 +141,4 @@ export default {
   padding: 5px;
   cursor: pointer;
 }
-.suggest {
-  position: absolute;
-  top: 64px;
-  border-radius: 2px;
-  width: 198px;
-  background: white;
-  z-index: 2;
-}
-.input {
-  position: relative !important;
-}
-.list-val {
-  border-bottom: solid 1px grey;
-  padding: 5px;
-  cursor: pointer;
-}
-
 </style>

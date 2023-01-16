@@ -16,7 +16,7 @@ export default {
     formData.append("file", bookDetails.file);
     try {
       const { data } = await this.$axios.post(
-        `http://localhost:8080/data/`,
+        `${process.env.API_BASE_URL}/data/`,
         formData,
         {
           headers: {

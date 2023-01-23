@@ -151,6 +151,7 @@
 
     </div>
     <div id="update" class="update-data" v-show="openModal && !pdfShow">
+
       <Form :singleData="getSingleManga"/>
     </div>
     <Footer />

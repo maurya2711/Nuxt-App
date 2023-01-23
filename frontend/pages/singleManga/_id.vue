@@ -150,7 +150,8 @@
       <OpenPdf :pdfSource="getSingleManga.file" />
 
     </div>
-    <div id="update" class="update-data" v-show="openModal">
+    <div id="update" class="update-data" v-show="openModal && !pdfShow">
+
       <Form :singleData="getSingleManga"/>
     </div>
     <Footer />
@@ -255,7 +256,8 @@ export default {
 </script>
 <style scoped>
 .single-manga-container{
-  height: 100% !important
+  height: 100% !important;
+  overflow-y: hidden
 }
 
 .single-manga-content {

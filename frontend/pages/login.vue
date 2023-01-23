@@ -126,9 +126,8 @@
           </div>
         </div>
       </div>
-    </section
+    </section>
 
-</div>
 </template>
 
 <script>

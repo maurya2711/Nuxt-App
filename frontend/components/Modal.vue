@@ -2,11 +2,10 @@
     <transition name="modal-fade">
       <div class="modal-overlay" @click="$emit('close-modal')">
         <div class="popup" @click.stop>
-            <h5>Update Details</h5>
-            <div class="update-form">
-                   <Form />
+            <div class="form-update">
+              
             </div>
-          <button>Go Home</button>
+
         </div>
         <div class="close" @click="$emit('close-modal')">
           <img class="close-img"  alt="close" />
@@ -87,9 +86,7 @@
     border-radius: 16px;
     margin-top: 50px;
   }
-  .update-form{
-    margin-left: -195px;
-  }
+  
   .update-form :-webkit-scrollbar-track {
     border: 1px solid #000;
     padding: 2px 0;

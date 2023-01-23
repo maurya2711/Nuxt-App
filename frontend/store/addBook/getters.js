@@ -1,3 +1,4 @@
 export default {
-    getMessage: (state) => state.message
-  };
+  getMessage(state){ return state.message},
+  getSucess(state){ return state.apiSuccess},
+}

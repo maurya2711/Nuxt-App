@@ -1,51 +1,4 @@
 <template>
-  <div class="main-container">
-    <!-- <NuxtLogo /> -->
-  <!-- <div class="card shadow-lg p-3 mb-5 bg-white rounded card-container"> -->
-    <!-- <h4 class="ml-5">Login and start your Journey:-)</h4>
-    <b-form @submit="onSubmit" v-if="show">
-      <b-form-group
-        id="input-group-1"
-        label="Email address:"
-        label-for="input-1"
-        description="We'll never share your email with anyone else."
-      >
-        <b-form-input
-          id="input-1"
-          v-model="form.email"
-          type="email"
-          placeholder="Enter email"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group
-      id="input-group-2"
-      label="Password:"
-      label-for="input-2"
-    >
-      <b-form-input
-        id="input-2"
-        v-model="form.password"
-        type="password"
-        placeholder="Enter your password"
-        required
-      ></b-form-input>
-    </b-form-group>
-
-     
-      <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
-        <b-form-checkbox-group
-          v-model="form.checked"
-          id="checkboxes-4"
-          :aria-describedby="ariaDescribedby"
-        >
-          <b-form-checkbox value="me">Remember me</b-form-checkbox>
-        </b-form-checkbox-group>
-      </b-form-group>
-
-      <b-button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" variant="primary ">Login</b-button>
-      <p > New Here Click Here for <span class="span" @click="handleRoute">Sign Up</span></p>
-    </b-form> -->
     
     <section class="h-screen  shadow-lg ">
       
@@ -53,12 +6,14 @@
         <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
           <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
             <img
-              src="https://cdn.shopify.com/s/files/1/2491/1072/products/81wcnmytYaL._SL1500_480x480.jpg?v=1660720284"
-              class="w-full"
-              alt="Phone image"
-            />
+
+            src="https://i.pinimg.com/originals/22/1c/8e/221c8e898aeee45d6ec6cca3a0fed99e.jpg"
+            class="w-full logo-image"
+            alt="Phone image"
+          />
           </div>
-          <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
+          <div class="md:w-8/12 lg:w-5/12 lg:ml-20 px-5 py-5 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 login-form">
+
             <form>
               <!-- Email input -->
               <div class="form-header mb-3">
@@ -171,8 +126,8 @@
           </div>
         </div>
       </div>
-    </section>
-  <!-- </div> -->
+    </section
+
 </div>
 </template>
 
@@ -242,4 +197,17 @@ import NuxtLogo from '../components/NuxtLogo.vue'
     display: flex !important;
     align-items: center !important;
   }
+  section {
+    background-color: #212120;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .logo-image{
+    height: 622px !important;
+      border-radius: 36.3px !important;
+  }
+  .login-form{
+    background-color: whitesmoke !important;
+  }
+
 </style>

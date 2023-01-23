@@ -1,5 +1,6 @@
 <template>
-    <div class="books-container" >
+    <div class="books-container ml-5" >
+      <Loader v-if="loading"/>
       <div v-for="(data,index) in allBooks" :key="index">
         <b-card
           :title="data.title"
@@ -26,8 +27,18 @@ export default {
   props:{
     allBooks:Array
   },
+  data(){
+    return {
+      loading: true
+    }
+  },
   mounted(){
     console.log("in card component", this.allBooks)
+    if(this.allBooks.length !==0){
+      this.loading = false
+    }else{
+      this.loading = true
+    }
   },
   methods:{
     async handleManga(id){

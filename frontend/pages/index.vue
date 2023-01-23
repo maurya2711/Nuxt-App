@@ -6,10 +6,10 @@
     <div class="main-container" v-if="token !== null">
         <div class=" card shadow-lg p-3 mb-5 bg-white rounded header-card1" >
                   <!-- <Loader /> -->
-          <Carousal  v-model="loading"/>
+          <Carousal />
         </div>
         <div class="manga-row card shadow-lg p-3 mb-5 bg-white rounded">
-          <h5>Novels and Manga</h5>
+          <h5 class="card shadow-lg p-3 mb-5 bg-white rounded mt-2" >Novels and Manga</h5>
           <MangaCards :allBooks="getBooks" />
         </div>
         
@@ -18,6 +18,8 @@
       Oops no data found.
       <nuxt-link to="/login">Click here to login</nuxt-link>
     </div>
+    <Loader v-if="loading"/>
+    <Footer />
  </div>
 </template>
 
@@ -36,12 +38,20 @@ export default {
     data(){
       return {
         token:null,
-        loading:false,
+        loading:true,
         // allBooks:null,
       }
     },
     async mounted() {
-        console.log("mounted home page", this.$cookiz.get("token")); 
+        console.log("mounted home page", this.$cookiz.get("token"));
+        (this.$cookiz.get("token")) ? this.token= this.$cookiz.get("token") : this.token=null
+        this.loading= true;
+        console.log("mounted home page", this.getBooks)
+        if(this.getBooks){
+          this.loading= false;
+        }else{
+          this.loading= true;
+        } 
       //   this.$nextTick(() => {
       // this.$nuxt.$loading.start()
       // this.loading = true

@@ -194,9 +194,7 @@ export default {
     }),
   },
   mounted(){
-    console.log("mounted+++++++++++++++", this.getSingleManga)
     if(this.getSingleManga){
-      console.log("in if block")
       this.loading=false;
     }else{
       this.loading=true;

@@ -1,17 +1,19 @@
 <template>
-  <div class="main-container">
+    
     <section class="h-screen  shadow-lg ">
       
       <div class="container px-6 py-12 h-full">
         <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
           <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
             <img
+
             src="https://i.pinimg.com/originals/22/1c/8e/221c8e898aeee45d6ec6cca3a0fed99e.jpg"
             class="w-full logo-image"
             alt="Phone image"
           />
           </div>
           <div class="md:w-8/12 lg:w-5/12 lg:ml-20 px-5 py-5 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 login-form">
+
             <form>
               <!-- Email input -->
               <div class="form-header mb-3">
@@ -124,7 +126,8 @@
           </div>
         </div>
       </div>
-    </section>
+    </section
+
 </div>
 </template>
 
@@ -206,4 +209,5 @@ import NuxtLogo from '../components/NuxtLogo.vue'
   .login-form{
     background-color: whitesmoke !important;
   }
+
 </style>

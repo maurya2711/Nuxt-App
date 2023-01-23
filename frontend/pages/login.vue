@@ -126,9 +126,7 @@
           </div>
         </div>
       </div>
-    </section
-
-</div>
+    </section>
 </template>
 
 <script>

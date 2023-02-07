@@ -45,6 +45,10 @@ app.use(bodyParser.json());
 app.use("/data", require("./routes/routes"));
 
 //
+function getClientIP(req) {
+  return req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+}
+
 
 app.post("/", upload.single("image"), (req, res) => {
   console.log("Upload-------------->",req.file)
@@ -107,19 +111,20 @@ app.get("/", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    const ip = getClientIP(req);
     if (!email || !password) {
       return res.status(400).json({
         message: "Please fill all the fields",
       });
     }
     const user = await User.findOne({ email: email.toLowerCase() });
-
+    
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = jwt.sign({ id: user._id, email }, process.env.JWT_SECRET, {
         expiresIn: "9h",
       });
       user.token = token;
+      user.ip = ip;
       return res
         .status(200)
         .json({ message: "User logged in successfully", user , success: true });

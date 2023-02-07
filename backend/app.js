@@ -7,7 +7,7 @@ require("./config/database").connect();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("./model/users");
-const Aws = require("aws-sdk"); 
+const Aws = require("aws-sdk");
 // const corsOptions = {
 //   origin: "https://localhost:8081",
 // };
@@ -49,9 +49,8 @@ function getClientIP(req) {
   return req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 }
 
-
 app.post("/", upload.single("image"), (req, res) => {
-  console.log("Upload-------------->",req.file)
+  console.log("Upload-------------->", req.file);
   const params = {
     Bucket: process.env.MY_AWS_BUCKET_NAME,
     Key: req.file.originalname,
@@ -92,7 +91,9 @@ app.post("/", upload.single("image"), (req, res) => {
       });
 
       user.token = token;
-      res.status(201).json({ message: "User created successfully", user, success:true }); 
+      res
+        .status(201)
+        .json({ message: "User created successfully", user, success: true });
     });
   } catch (err) {
     res.status(500).send({ message: "Error in uploading image" });
@@ -118,22 +119,25 @@ app.post("/login", async (req, res) => {
       });
     }
     const user = await User.findOne({ email: email.toLowerCase() });
-    
+
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = jwt.sign({ id: user._id, email }, process.env.JWT_SECRET, {
         expiresIn: "9h",
       });
       user.token = token;
-      user.ip = ip;
       return res
         .status(200)
-        .json({ message: "User logged in successfully", user , success: true });
+        .json({
+          message: "User logged in successfully",
+          user,
+          ip,
+          success: true,
+        });
     }
     res.status(401).json({ message: "Invalid credentials" });
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong" ,success:false});
+    res.status(500).json({ message: "Something went wrong", success: false });
   }
 });
-
 
 module.exports = app;

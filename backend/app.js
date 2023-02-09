@@ -126,7 +126,7 @@ app.post("/login", async (req, res) => {
       });
       user.token = token;
       return res.status(200).json({
-        message: `User logged in successfully on ip= ${ip}`,
+        message: `User logged in successfully on ip= ${ip} with proxy ip of ${req.ip}`,
         user,
         success: true,
       });
